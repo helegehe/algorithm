@@ -3,7 +3,8 @@ package com.abao.algorithm;
 public class PrimeNumber {
     public static void main(String[] args) {
 
-        System.out.println(getPrime(100));
+        System.out.println(eFilter(100));
+//        System.out.println(getPrime(100));
     }
 
     public static int getPrime(int n){
@@ -20,5 +21,19 @@ public class PrimeNumber {
             }
         }
         return true;
+    }
+
+    public static int eFilter(int n){
+        int total = 0;
+        boolean[]filters = new boolean[n]; // false代表是素数
+        for(int i =2;i<n;i++){
+            if (!filters[i]){
+                total++;
+                for(int j=i*i;j<n;j+=i){
+                    filters[j] = true;
+                }
+            }
+        }
+        return total;
     }
 }
